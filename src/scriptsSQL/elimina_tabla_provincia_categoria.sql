@@ -1,0 +1,1 @@
+DROP TABLE totales_provincia_categoria

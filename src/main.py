@@ -3,7 +3,7 @@ import descarga
 from procesamiento_datos import Procesador
 
 def main():
-    descarga.descarga()
+    # descarga.descarga()
     datos = Procesador()
     actualizar_tabla_general(datos.general)
     actualiza_tabla_categoria(datos.totales_categoria)

@@ -10,6 +10,15 @@ viaje, pero me gustaría que me corrijan para poder ingresar (si califico) en la
 Septiembre. De no calificar, les agradecería que me comenten cuales fueron mis falencias para poder
 corregirlo cuanto antes y seguir aprendiendo.
 
+Ha medida que fui desarrollando el proyecto, me di cuenta que podría realizar un código mas compacto
+aunque quizas un poco más complejo pa su lectura, por eso decidí dejarlo de esta forma, igualmente
+me serviría que me digan todo lo que ven para mejorar en mis futuros proyectos.
+Tambien me quedan algunas dudas del cumplimiento de algunos de los puntos, pero lo fui haciendo según
+mis conocimientos de programación y lo que fui aprendiendo a medida que trabajaba sobre el proyecto.
+Por ejemplo, cuando piden trabajar con archivos con extension ".sql" no se si es la forma correcta de 
+utilizarlos, pero fue la que se me ocurrió. Si se finjan en la primera versión subida, armé las query
+directamente desde python, pero lo cambié para ver si puedo cumplir con este requerimiento.
+
 Les dejo mis sitios de contacto para cualquier duda o consulta:
 j_m_vicente@yahoo.com.ar
 linkedin.com/in/juanmvicente

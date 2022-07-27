@@ -1,6 +1,5 @@
 from datetime import date
 from conexion_postgresql import crea_tabla_categoria, crea_tabla_cine, crea_tabla_fuente, crea_tabla_general, crea_tabla_provincia_categoria, inserta_tabla_categoria, inserta_tabla_cine, inserta_tabla_fuente, inserta_tabla_general, inserta_tabla_provincia_categoria
-from nombre_archivo import completeNum
 
 def actualizar_tabla_general(general):
     crea_tabla_general()
@@ -14,21 +13,24 @@ def actualizar_tabla_general(general):
         localidad = str(row[5]).replace("'","_")
         nombre = str(row[6]).replace("'","_")
         direccion = str(row[7]).replace("'","_")
-        inserta_tabla_general(row[0],row[1],row[2],row[3],row[4],localidad,nombre,direccion,row[8],row[9],row[10],row[11],fecha)
+        datos = [row[0],row[1],row[2],row[3],row[4],localidad,nombre,direccion,row[8],row[9],row[10],row[11],fecha]
+        inserta_tabla_general(datos)
 
 
 def actualiza_tabla_categoria(categoria):
     crea_tabla_categoria()
     fecha = str(date.today())
     for key in categoria:
-        inserta_tabla_categoria(key, categoria[key],fecha)
+        datos = [key, categoria[key],fecha]
+        inserta_tabla_categoria(datos)
 
 
 def actualiza_tabla_fuente(fuente):
     crea_tabla_fuente()
     fecha = str(date.today())
     for key in fuente:
-        inserta_tabla_fuente(key, fuente[key],fecha)
+        datos = [key, fuente[key],fecha]
+        inserta_tabla_fuente(datos)
 
 
 def actualiza_tabla_provincia_categoria(provincia_categoria):
@@ -37,11 +39,13 @@ def actualiza_tabla_provincia_categoria(provincia_categoria):
     for key in provincia_categoria:
         row = str(key)
         row = row.split(" - ")
-        inserta_tabla_provincia_categoria(row[0],row[1],provincia_categoria[key],fecha)
+        datos = [row[0],row[1],provincia_categoria[key],fecha]
+        inserta_tabla_provincia_categoria(datos)
 
 def actualiza_tabla_cine(cine):
     crea_tabla_cine()
     fecha = str(date.today())
     for row in cine:
-        inserta_tabla_cine(row[0],row[1],row[2],row[3],fecha)
+        datos = [row[0],row[1],row[2],row[3],fecha]
+        inserta_tabla_cine(datos)
 

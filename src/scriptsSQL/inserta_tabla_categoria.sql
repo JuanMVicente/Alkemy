@@ -1,0 +1,1 @@
+INSERT INTO totales_categoria values (%s,%s,%s)

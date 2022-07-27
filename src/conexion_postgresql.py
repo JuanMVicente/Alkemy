@@ -12,27 +12,15 @@ try:
     connection.autocommit = True
     # print("conexion exitosa")
 except Exception as ex:
+    print("No fue posible la conexión con la base de datos")
     print(ex)
 
 
 def crea_tabla_general():
     cursor = connection.cursor()
-    query =  '''CREATE TABLE consolidado_general
-            (
-                cod_localidad varchar(8),
-                id_provincia varchar(2),
-                id_departamento varchar(6),
-                categoria varchar(60),
-                provincia varchar(60),
-                localidad varchar(50),
-                nombre varchar(120),
-                domicilio varchar(100),
-                cp varchar(10),
-                telefono varchar(30),
-                mail varchar(100),
-                web varchar(150),
-                fecha varchar(10)
-            );'''
+    file =  open("src\scriptsSQL\crea_tabla_general.sql", "r")
+    query = file.read()
+    
     try:
         cursor.execute(query)
         # print("Tabla General ha sido Generada")
@@ -44,24 +32,22 @@ def crea_tabla_general():
 
 def elimina_tabla_general():
     cursor = connection.cursor() 
-    query = 'DROP TABLE consolidado_general'
+    file = open("src\scriptsSQL\elimina_tabla_general.sql", "r")
+    query = file.read()
     cursor.execute(query)
     cursor.close()
 
-def inserta_tabla_general(cod_localidad, id_provincia, id_departamento, categoria, provincia, localidad, nombre, domicilio, cp, telefono, mail, web,fecha):
+def inserta_tabla_general(datos):
     cursor = connection.cursor()
-    query = f"INSERT INTO consolidado_general values ('{cod_localidad}','{id_provincia}','{id_departamento}','{categoria}','{provincia}','{localidad}','{nombre}','{domicilio}','{cp}','{telefono}','{mail}','{web}','{fecha}')"
-    cursor.execute(query)
+    file = open("src\scriptsSQL\inserta_tabla_general.sql", "r")
+    query = file.read()
+    cursor.execute(query, datos)
     cursor.close()
 
 def crea_tabla_categoria():
     cursor = connection.cursor()
-    query = '''CREATE TABLE totales_categoria
-            (
-                categoria varchar(40),
-                total int,
-                fecha varchar(10)
-            );'''
+    file = open("src\scriptsSQL\crea_tabla_categoria.sql", "r")
+    query = file.read()
     try:
         cursor.execute(query)
         # print("Tabla TotalesCategoria ha sido Generada")
@@ -73,24 +59,22 @@ def crea_tabla_categoria():
 
 def elimina_tabla_categoria():
     cursor = connection.cursor() 
-    query = 'DROP TABLE totales_categoria'
+    file = open("src\scriptsSQL\elimina_tabla_categoria.sql", "r")
+    query = file.read()
     cursor.execute(query)
     cursor.close()
 
-def inserta_tabla_categoria(categoria, total,fecha):
+def inserta_tabla_categoria(datos):
     cursor = connection.cursor()
-    query = f"INSERT INTO totales_categoria values ('{categoria}',{total},'{fecha}')"
-    cursor.execute(query)
+    file = open("src\scriptsSQL\inserta_tabla_categoria.sql", "r")
+    query = file.read()
+    cursor.execute(query,datos)
     cursor.close()
 
 def crea_tabla_fuente():
     cursor = connection.cursor()
-    query = '''CREATE TABLE totales_fuente
-            (
-                fuente varchar(100),
-                total int,
-                fecha varchar(10)
-            );'''
+    file = open("src\scriptsSQL\crea_tabla_fuente.sql", "r")
+    query = file.read()
     try:
         cursor.execute(query)
         # print("Tabla TotalesFuente ha sido Generada")
@@ -102,26 +86,23 @@ def crea_tabla_fuente():
 
 def elimina_tabla_fuente():
     cursor = connection.cursor() 
-    query = 'DROP TABLE totales_fuente'
+    file = open("src\scriptsSQL\elimina_tabla_fuente.sql", "r")
+    query = file.read()
     cursor.execute(query)
     cursor.close()
 
-def inserta_tabla_fuente(fuente, total, fecha):
+def inserta_tabla_fuente(datos):
     cursor = connection.cursor()
-    query = f"INSERT INTO totales_fuente values ('{fuente}',{total},'{fecha}')"
-    cursor.execute(query)
+    file = open("src\scriptsSQL\inserta_tabla_fuente.sql", "r")
+    query = file.read()
+    cursor.execute(query,datos)
     cursor.close()
 
 
 def crea_tabla_provincia_categoria():
     cursor = connection.cursor()
-    query = '''CREATE TABLE totales_provincia_categoria
-            (
-                provincia varchar(60),
-                categoria varchar(60),
-                total int,
-                fecha varchar(10)
-            );'''
+    file = open("src\scriptsSQL\crea_tabla_provincia_categoria.sql", "r")
+    query = file.read()
     try:
         cursor.execute(query)
         # print("Tabla TotalesProvinciaCategoria ha sido Generada")
@@ -134,27 +115,23 @@ def crea_tabla_provincia_categoria():
 
 def elimina_tabla_provincia_categoria():
     cursor = connection.cursor() 
-    query = 'DROP TABLE totales_provincia_categoria'
+    file = open("src\scriptsSQL\elimina_tabla_provincia_categoria.sql", "r")
+    query = file.read()
     cursor.execute(query)
     cursor.close()
 
-def inserta_tabla_provincia_categoria(categoria, provincia, total,fecha):
+def inserta_tabla_provincia_categoria(datos):
     cursor = connection.cursor()
-    query = f"INSERT INTO totales_provincia_categoria values ('{categoria}','{provincia}',{total},'{fecha}')"
-    cursor.execute(query)
+    file = open("src\scriptsSQL\inserta_tabla_provincia_categoria.sql", "r")
+    query = file.read()
+    cursor.execute(query,datos)
     cursor.close()
 
 
 def crea_tabla_cine():
     cursor = connection.cursor()
-    query = '''CREATE TABLE info_salas_cine
-            (
-                provincia varchar(60),
-                pantallas int,
-                butacas int,
-                incaa int,
-                fecha varchar(10)
-            );'''
+    file = open("src\scriptsSQL\crea_tabla_cine.sql", "r")
+    query = file.read()
     try:
         cursor.execute(query)
         # print("Tabla InfoSalasDeCine ha sido Generada")
@@ -166,12 +143,14 @@ def crea_tabla_cine():
 
 def elimina_tabla_cine():
     cursor = connection.cursor() 
-    query = 'DROP TABLE info_salas_cine'
+    file = open("src\scriptsSQL\elimina_tabla_cine.sql", "r")
+    query = file.read()
     cursor.execute(query)
     cursor.close()
 
-def inserta_tabla_cine(provincia, pantallas, butacas, incaa, fecha):
+def inserta_tabla_cine(datos):
     cursor = connection.cursor()
-    query = f"INSERT INTO info_salas_cine values ('{provincia}',{pantallas},{butacas},{incaa},'{fecha}')"
-    cursor.execute(query)
+    file = open("src\scriptsSQL\inserta_tabla_cine.sql", "r")
+    query = file.read()
+    cursor.execute(query,datos)
     cursor.close()

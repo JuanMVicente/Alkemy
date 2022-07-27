@@ -1,0 +1,1 @@
+INSERT INTO totales_fuente values (%s,%s,%s)
