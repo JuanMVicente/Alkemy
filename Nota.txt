@@ -13,11 +13,16 @@ corregirlo cuanto antes y seguir aprendiendo.
 Ha medida que fui desarrollando el proyecto, me di cuenta que podría realizar un código mas compacto
 aunque quizas un poco más complejo pa su lectura, por eso decidí dejarlo de esta forma, igualmente
 me serviría que me digan todo lo que ven para mejorar en mis futuros proyectos.
+
 Tambien me quedan algunas dudas del cumplimiento de algunos de los puntos, pero lo fui haciendo según
 mis conocimientos de programación y lo que fui aprendiendo a medida que trabajaba sobre el proyecto.
 Por ejemplo, cuando piden trabajar con archivos con extension ".sql" no se si es la forma correcta de 
 utilizarlos, pero fue la que se me ocurrió. Si se finjan en la primera versión subida, armé las query
 directamente desde python, pero lo cambié para ver si puedo cumplir con este requerimiento.
+
+Otro tema para tener en cuenta es que al finalizar el proyecto actual me di cuenta que no utilice 
+SQL Alchemy ni la librería Pandas. Entiendo que esta última me podría ayudar para realizar otros 
+cálculos, pero no me fue necesario utilizarlos para lo que pedía el proyecto.
 
 Les dejo mis sitios de contacto para cualquier duda o consulta:
 j_m_vicente@yahoo.com.ar
