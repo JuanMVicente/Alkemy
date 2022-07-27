@@ -2,7 +2,7 @@ import categorias
 import requests
 import nombre_archivo
 
-# Descarga, genera carpetas y graba los archivos correspondientes
+# Descarga los archivos de la web, genera carpetas y graba los archivos correspondientes
 def descarga():
     categorys = categorias.categorys
     for category in categorys:

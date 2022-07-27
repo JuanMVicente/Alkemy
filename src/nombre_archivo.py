@@ -18,7 +18,7 @@ def completeNum(num):
     else:
         return str(num)
 
-
+# Retorna el nombre del archivo que va a llevar una vez que se descargue de la web
 def nombre(category):
     # Genera la carpeta de la categoría
     if not(os.path.isdir(category)):
@@ -32,9 +32,8 @@ def nombre(category):
     return nameFile
 
 
+# Retorna la direccion donde se van a encontrar loa archivos descargados por el programa (no se encuentra utilizado en el proyecto)
 def direccion(category):
-    # Devuelve la direccion del ultimo archivo de la categroría (por ahora no lo uso)
-    # tiene la limitacion que entre carpeta con el ultimo mes vigente y puede no estar generado
     dt = date.today()
     direccion = os.getcwd() + category + "\\" + str(dt.year) + "-" + monthName(dt.month)
     return direccion

@@ -3,7 +3,8 @@ import categorias
 import nombre_archivo
 import csv
 
-
+# Se utiliza la clase procesador para realizar el procesamiento de los archivos, generando la consolidacion corresondiente la información
+# para ello no se utilizó la librería Panda
 class Procesador:
     general = []
     totales_categoria = {'Museos':0, 'Salas de cine':0, 'Bibliotecas Populares':0}
@@ -13,11 +14,12 @@ class Procesador:
     totales_cines_aux = {}
     aux_cines = 0
 
+    # contructor con el cual se generan todas las tablas solicitadas para el proyecto
     def __init__(self):
         self.procesa_archivo()
 
 
-
+    # procesa cada linea leída en cada uno de los archivos descargados
     def procesa_linea(self,categoria):
         archivo_csv = nombre_archivo.nombre(categoria)
         with open(archivo_csv,mode="r", encoding='UTF8') as archivo:
@@ -38,6 +40,8 @@ class Procesador:
                 self.contador_provincia_y_categoria(fila)
         return lista
 
+
+    # Envía a procesar cada una de las categorías del proyecto
     def procesa_archivo(self):
         categorys = categorias.categorys
         for category in categorys:
@@ -45,6 +49,7 @@ class Procesador:
         return
         
     
+    # Realiza los calculos para generar el diccionario con las cantidades de cada una de las categorías
     def contador_categoria(self, fila):
         if fila[3] == 'Espacios de Exhibición Patrimonial':
             self.totales_categoria['Museos'] += 1
@@ -54,6 +59,8 @@ class Procesador:
             self.totales_categoria['Bibliotecas Populares'] += 1
         return
     
+
+    # Realiza los calculos para generar el diccionario con las cantidades de cada una de las fuentes
     def contador_fuente(self,linea):
         if linea[21] in self.totales_fuente.keys():
             self.totales_fuente[linea[21]]+=1
@@ -61,6 +68,8 @@ class Procesador:
             self.totales_fuente[linea[21]]=1
         return
     
+
+    # Realiza los calculos para generar el diccionario con las cantidades de cada una de las provincias y categorías
     def contador_provincia_y_categoria(self,fila):
         nombre = fila[4] + " - " + fila[3]
         if nombre in self.totales_provincia_y_categoria.keys():
@@ -69,6 +78,7 @@ class Procesador:
             self.totales_provincia_y_categoria[nombre]=1
         return
     
+    # Realiza los calculos para generar la lista con las cantidades solicitadas de los datos de los cines
     def contador_cines(self,linea):
         # uso un diccionario auxiliar para no agregar lineas de mas en la tabla
         # con la ubicacion de la prov armo la tabla correspondiente
@@ -101,7 +111,7 @@ class Procesador:
         return
 
     
-
+# utilizado para prueba/debug de cada una de las funciones
 '''utilizado para probar la clase
 proc.genera_tabla()
 print(proc.datos[0])
